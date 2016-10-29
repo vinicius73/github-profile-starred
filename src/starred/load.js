@@ -1,7 +1,8 @@
+import isEmpty from 'lodash.isempty'
 import client from '../client'
 import parseResponse from '../parsers/response'
 
-const perPage = 100
+const perPage = 150
 
 const loadStarreds = (username, page = 1, prevData = []) => {
   const params = { page, per_page: perPage }
@@ -11,7 +12,7 @@ const loadStarreds = (username, page = 1, prevData = []) => {
   }
 
   const next = ({data, meta}) => {
-    if (meta.pagination.next) {
+    if (!isEmpty(meta.pagination.next)) {
       return loadStarreds(username, meta.pagination.next, data)
     }
 
