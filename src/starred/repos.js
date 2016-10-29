@@ -1,11 +1,9 @@
-import client from '../client'
-import parseResponse from '../parsers/response'
+import load from './load'
 
-const perPage = 100
-const getRepos = (username, page = 1) => {
-  const params = { page, per_page: perPage }
-  return client.get(`/users/${username}/starred`, { params })
-    .then(parseResponse)
+export default username => {
+  return load(username)
+    .then(repos => {
+      // console.log(repos)
+      return repos.length
+    })
 }
-
-module.exports = getRepos
