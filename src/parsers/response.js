@@ -1,7 +1,7 @@
 import githubPagination from 'github-pagination'
 
-export default ({ data, header }) => {
-  const meta = { pagination: githubPagination.parse(header.links) }
+export default ({ data, headers }) => {
+  const meta = { pagination: githubPagination.parser(headers.link) }
 
   return { meta, data }
 }

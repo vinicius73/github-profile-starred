@@ -1,5 +1,5 @@
 import client from '../client'
-import parseResponse from '../parcers/response'
+import parseResponse from '../parsers/response'
 
 const perPage = 100
 const getRepos = (username, page = 1) => {
